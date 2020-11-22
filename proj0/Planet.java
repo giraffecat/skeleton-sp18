@@ -81,4 +81,6 @@ public class Planet {
         this.xxPos = this.xxPos + time * this.xxVel;
         this.yyPos = this.yyPos + time * this.yyVel;
     }
+
+    public void draw(){};
 }

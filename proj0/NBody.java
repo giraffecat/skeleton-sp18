@@ -31,8 +31,8 @@ public class NBody {
         String filename = args[2];
         Planet[] planets = readPlanets("data/planets.txt");
         double radius = readRadius(filename);
-        double[] xForces = new double[5];
-        double[] yForces = new double[5];
+        double[] xForces = new double[planets.length];
+        double[] yForces = new double[planets.length];
         StdDraw.setScale(-radius,radius);
         StdDraw.picture(0,0,"images/starfield.jpg");
         StdDraw.enableDoubleBuffering();
