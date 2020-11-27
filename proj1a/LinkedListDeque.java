@@ -107,18 +107,18 @@ public class LinkedListDeque<T>{
         while(index != 0){
             head = head.next;
             index--;
-        };
+        }
         return head.T;
     }
     
-    public static void main(String[] args) {
-        LinkedListDeque D = new LinkedListDeque("karry");
-        D.addFirst("cat");
-        D.addLast("pig");
-        D.addLast("bird");
-        D.addFirst("mouse");
-        D.removeFirst();
-        D.removeLast();
-        D.printDeque();
-    }
+//    public static void main(String[] args) {
+//        LinkedListDeque D = new LinkedListDeque("karry");
+//        D.addFirst("cat");
+//        D.addLast("pig");
+//        D.addLast("bird");
+//        D.addFirst("mouse");
+//        D.removeFirst();
+//        D.removeLast();
+//        D.printDeque();
+//    }
 }

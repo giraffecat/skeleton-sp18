@@ -55,6 +55,7 @@ public class ArrayDeque<T> {
         }
     }
     public T removeFirst(){
+        if(size() == 0) return null;
         if(size()<(Maxsize/4)) resize(Maxsize/2);
         front = (front+Maxsize-1)%Maxsize;
         T t = Ts[front];
@@ -62,6 +63,7 @@ public class ArrayDeque<T> {
         return  t;
     }
     public T removeLast(){
+        if(size() == 0) return null;
         if(size()<(Maxsize/4)) resize(Maxsize/2);
         T t = Ts[rear];
         rear = (rear+1)%Maxsize;
@@ -73,36 +75,35 @@ public class ArrayDeque<T> {
         int start = front-1;
         int pos = (start+Maxsize) % Maxsize;
         while(index != 0){
-            pos = (start+Maxsize) % Maxsize;
             start--;
             index--;
+            pos = (start+Maxsize) % Maxsize;
         }
         return  Ts[pos];
     }
 
-    public static void main(String[] args) {
-        ArrayDeque A = new ArrayDeque();
-        A.addFirst(2);
-        A.addFirst(3);
-        A.addLast(4);
-        A.addLast(5);
-        A.addFirst(6);
-        A.addFirst(7);
-        A.addFirst(8);
-        A.addFirst(9);
-        A.addFirst(10);
-
-        A.removeFirst();
-        A.removeLast();
-        A.removeFirst();
-        A.removeLast();
-        A.removeFirst();
-        A.removeLast();
-        A.removeFirst();
-        A.removeLast();
-
-        System.out.print("第1个数："+A.get(1)+"MaxSize:"+A.Maxsize);
-        A.printDeque();
-    }
+//    public static void main(String[] args) {
+//        ArrayDeque A = new ArrayDeque();
+//        A.addFirst(2);
+//        A.addFirst(3);
+//        A.addLast(4);
+////        A.addLast(5);
+////        A.addFirst(6);
+////        A.addFirst(7);
+////        A.addFirst(8);
+////        A.addFirst(9);
+////        A.addFirst(10);
+////
+////        A.removeFirst();
+////        A.removeLast();
+////        A.removeFirst();
+////        A.removeLast();
+////        A.removeFirst();
+////        A.removeLast();
+////        A.removeFirst();
+//
+//        System.out.print("第1个数："+A.get(2)+"\nMaxSize:"+A.Maxsize);
+//        A.printDeque();
+//    }
 
 }
