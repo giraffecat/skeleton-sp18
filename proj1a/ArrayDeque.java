@@ -15,8 +15,8 @@ public class ArrayDeque<T> {
 //        遍历复制？？？是不是有点蠢？？ 诶 想不到其他方法
 //        那缩小的时候也可以用遍历复制？？
         int length = size();
-        for(int i=length;i>0;i--){
-            a[length-i] = get(i);
+        for(int i=length-1;i>=0;i--){
+            a[length-1-i] = get(i);
         }
         Ts = a;
         front = length;
@@ -82,28 +82,30 @@ public class ArrayDeque<T> {
         return  Ts[pos];
     }
 
-//    public static void main(String[] args) {
-//        ArrayDeque A = new ArrayDeque();
-//        A.addFirst(2);
-//        A.addFirst(3);
-//        A.addLast(4);
-////        A.addLast(5);
-////        A.addFirst(6);
-////        A.addFirst(7);
-////        A.addFirst(8);
-////        A.addFirst(9);
-////        A.addFirst(10);
-////
-////        A.removeFirst();
-////        A.removeLast();
-////        A.removeFirst();
-////        A.removeLast();
-////        A.removeFirst();
-////        A.removeLast();
-////        A.removeFirst();
-//
-//        System.out.print("第1个数："+A.get(2)+"\nMaxSize:"+A.Maxsize);
-//        A.printDeque();
-//    }
+    public static void main(String[] args) {
+        ArrayDeque A = new ArrayDeque();
+        A.addFirst(2);
+        A.addFirst(3);
+        A.addLast(4);
+        A.addLast(5);
+        A.addFirst(6);
+        A.addFirst(7);
+        A.addFirst(8);
+        A.addFirst(9);
+        A.addFirst(10);
+        A.addFirst(7);
+        A.addFirst(8);
+        A.addFirst(9);
+        A.addFirst(10);
+        A.addFirst(7);
+        A.addFirst(8);
+        A.addFirst(9);
+        A.addFirst(10);
+
+
+
+        System.out.print("第1个数："+A.get(2)+"\nMaxSize:"+A.Maxsize);
+        A.printDeque();
+    }
 
 }
