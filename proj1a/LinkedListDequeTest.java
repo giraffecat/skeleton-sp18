@@ -63,7 +63,7 @@ public class LinkedListDequeTest {
 		*/
 	}
 
-	/** Adds an item, then removes an item, and ensures that dll is empty afterwards. */
+	/** Adds an T, then removes an T, and ensures that dll is empty afterwards. */
 	public static void addRemoveTest() {
 
 		System.out.println("Running add/remove test.");
@@ -90,7 +90,7 @@ public class LinkedListDequeTest {
 		LinkedListDeque D = new LinkedListDeque("karry");
 		LinkedListDeque N = new LinkedListDeque();
 		N.addFirst("karry");
-		org.junit.Assert.assertEquals(N.sentinel.next.item,D.sentinel.next.item);
+		org.junit.Assert.assertEquals(N.sentinel.next.T,D.sentinel.next.T);
 	}
 
 	@Test
@@ -100,7 +100,7 @@ public class LinkedListDequeTest {
 		LinkedListDeque N = new LinkedListDeque();
 		N.addLast("karry");
 		N.addLast("cat");
-		org.junit.Assert.assertEquals(N.sentinel.next.pre.item,D.sentinel.next.pre.item);
+		org.junit.Assert.assertEquals(N.sentinel.next.pre.T,D.sentinel.next.pre.T);
 	}
 
 	@Test(timeout = 1000)

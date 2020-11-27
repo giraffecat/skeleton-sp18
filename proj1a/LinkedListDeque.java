@@ -1,17 +1,17 @@
-public class LinkedListDeque<Item>{
+public class LinkedListDeque<T>{
     public class LinkNode{
-        public Item item;
+        public T T;
         public LinkNode next;
         public LinkNode pre;
 
-        public LinkNode(LinkNode p,Item i, LinkNode n){
-            item = i;
+        public LinkNode(LinkNode p,T i, LinkNode n){
+            T = i;
             next = n;
             pre = p;
         }
 
         public LinkNode(){
-            item = null;
+            T = null;
             next = null;
             pre = null;
         }
@@ -20,7 +20,7 @@ public class LinkedListDeque<Item>{
     public LinkNode sentinel;
     private int size;
 
-    public LinkedListDeque(Item N){
+    public LinkedListDeque(T N){
         sentinel = new LinkNode();
         LinkNode node = new LinkNode(null,N,null);
         sentinel.next = node;
@@ -34,9 +34,9 @@ public class LinkedListDeque<Item>{
         size = 0;
     }
 
-    public void addFirst(Item item){
+    public void addFirst(T T){
         LinkNode N = new LinkNode();
-        N.item = item;
+        N.T = T;
         N.pre = N;
         N.next = N;
         if(size == 0) {
@@ -51,9 +51,9 @@ public class LinkedListDeque<Item>{
         size++;
     }
 
-    public void addLast(Item item){
+    public void addLast(T T){
         LinkNode N = new LinkNode();
-        N.item = item;
+        N.T = T;
         N.pre = N;
         N.next = N;
         if(size == 0) {
@@ -81,34 +81,34 @@ public class LinkedListDeque<Item>{
         LinkNode ptr = sentinel.next;
         System.out.println("printDeque:");
         while(length !=0) {
-            System.out.print(ptr.item+" ");
+            System.out.print(ptr.T+" ");
             ptr = ptr.next;
             length--;
         }
     }
-    public Item removeFirst(){
+    public T removeFirst(){
         if(size == 0) return null;
         LinkNode ptr = sentinel.next;
         sentinel.next = sentinel.next.next;
         size--;
-        return ptr.item;
+        return ptr.T;
     }
-    public Item removeLast(){
+    public T removeLast(){
         if(size == 0) return null;
         LinkNode ptr = sentinel.next;
         sentinel.next.pre = sentinel.next.pre.pre;
         sentinel.next.pre.next = sentinel.next;
         size--;
-        return ptr.item;
+        return ptr.T;
     }
-    public Item get(int index){
+    public T get(int index){
         if(index>size) return null;
         LinkNode head = sentinel.next;
         while(index != 0){
             head = head.next;
             index--;
         };
-        return head.item;
+        return head.T;
     }
     
     public static void main(String[] args) {

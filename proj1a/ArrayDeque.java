@@ -1,5 +1,5 @@
-public class ArrayDeque<Item> {
-    private Item[] items;
+public class ArrayDeque<T> {
+    private T[] Ts;
     private int Maxsize = 8;
     private int front=0;
     private int rear=0;
@@ -7,34 +7,34 @@ public class ArrayDeque<Item> {
     private boolean tag = false;
 
     public ArrayDeque(){
-        items = (Item[]) new Object[Maxsize];
+        Ts = (T[]) new Object[Maxsize];
     }
 
     private void  resize(int capacity){
-        Item[] a =(Item[]) new Object[capacity];
+        T[] a =(T[]) new Object[capacity];
 //        遍历复制？？？是不是有点蠢？？ 诶 想不到其他方法
 //        那缩小的时候也可以用遍历复制？？
         int length = size();
         for(int i=length;i>0;i--){
             a[length-i] = get(i);
         }
-        items = a;
+        Ts = a;
         front = length;
         rear=0;
         Maxsize = capacity;
     }
     //约定 队头指针与队尾指针的位置相同 且 tag是true 作为队满的标志
-    public void addFirst(Item item){
+    public void addFirst(T T){
         if(size() == Maxsize) resize(Maxsize*2);
-        items[front] = item;
+        Ts[front] = T;
         front = (front+1)%Maxsize;
         tag = true;
 
     }
-    public void addLast(Item item){
+    public void addLast(T T){
         if(size() == Maxsize) resize(Maxsize*2);
         rear = (rear+Maxsize-1)%Maxsize;
-        items[rear] = item;
+        Ts[rear] = T;
         tag = true;
 
     };
@@ -49,26 +49,26 @@ public class ArrayDeque<Item> {
         System.out.print("\n数组：");
         while(length != 0){
             int pos = (start+Maxsize) % Maxsize;
-            System.out.print(items[pos]);
+            System.out.print(Ts[pos]);
             start--;
             length--;
         }
     }
-    public Item removeFirst(){
+    public T removeFirst(){
         if(size()<(Maxsize/4)) resize(Maxsize/2);
         front = (front+Maxsize-1)%Maxsize;
-        Item t = items[front];
+        T t = Ts[front];
         tag = false;
         return  t;
     }
-    public Item removeLast(){
+    public T removeLast(){
         if(size()<(Maxsize/4)) resize(Maxsize/2);
-        Item t = items[rear];
+        T t = Ts[rear];
         rear = (rear+1)%Maxsize;
         tag = false;
         return  t;
     }
-    public Item get(int index){
+    public T get(int index){
         int length = size();
         int start = front-1;
         int pos = (start+Maxsize) % Maxsize;
@@ -77,7 +77,7 @@ public class ArrayDeque<Item> {
             start--;
             index--;
         }
-        return  items[pos];
+        return  Ts[pos];
     }
 
     public static void main(String[] args) {
@@ -95,7 +95,7 @@ public class ArrayDeque<Item> {
         A.removeFirst();
         A.removeLast();
         A.removeFirst();
-        A.removeLast();        
+        A.removeLast();
         A.removeFirst();
         A.removeLast();
         A.removeFirst();
