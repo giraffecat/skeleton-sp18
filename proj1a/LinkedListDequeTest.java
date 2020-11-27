@@ -1,3 +1,5 @@
+import org.junit.Test;
+import org.junit.Assert.*;
 /** Performs some basic linked list tests. */
 public class LinkedListDequeTest {
 	
@@ -42,8 +44,8 @@ public class LinkedListDequeTest {
 		boolean passed = checkEmpty(true, lld1.isEmpty());
 
 		lld1.addFirst("front");
-		
-		// The && operator is the same as "and" in Python.
+
+//		 The && operator is the same as "and" in Python.
 		// It's a binary operator that returns true if both arguments true, and false otherwise.
 		passed = checkSize(1, lld1.size()) && passed;
 		passed = checkEmpty(false, lld1.isEmpty()) && passed;
@@ -82,6 +84,31 @@ public class LinkedListDequeTest {
 
 		printTestStatus(passed);
 		*/
+	}
+	@Test
+	public void addFirstTest(){
+		LinkedListDeque D = new LinkedListDeque("karry");
+		LinkedListDeque N = new LinkedListDeque();
+		N.addFirst("karry");
+		org.junit.Assert.assertEquals(N.sentinel.next.item,D.sentinel.next.item);
+	}
+
+	@Test
+	public void addLastTest(){
+		LinkedListDeque D = new LinkedListDeque("karry");
+		D.addFirst("cat");
+		LinkedListDeque N = new LinkedListDeque();
+		N.addLast("karry");
+		N.addLast("cat");
+		org.junit.Assert.assertEquals(N.sentinel.next.pre.item,D.sentinel.next.pre.item);
+	}
+
+	@Test(timeout = 1000)
+	public void getTest(){
+		LinkedListDeque D = new LinkedListDeque("karry");
+		D.addFirst("cat");
+		D.addLast("pig");
+		org.junit.Assert.assertEquals("pig",D.get(3));
 	}
 
 	public static void main(String[] args) {
