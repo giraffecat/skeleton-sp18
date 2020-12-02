@@ -1,8 +1,8 @@
 public class ArrayDeque<Item> implements Deque<Item> {
     private Item[] Ts;
     private int Maxsize = 8;
-    private int front=0;
-    private int rear=0;
+    private int front = 0;
+    private int rear = 0;
     //tag is false mean out, tag is true mean in
     private boolean tag = false;
 

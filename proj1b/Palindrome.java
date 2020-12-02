@@ -10,6 +10,7 @@ public class Palindrome {
     }
 
     public boolean isPalindrome(String word) {
+        if(word.length()==0||word.length()==1) return true;
         Deque L = wordToDeque(word);
         int end = L.size()-1;
         int start = 0;
@@ -24,9 +25,10 @@ public class Palindrome {
     }
 
     public boolean isPalindrome(String word, CharacterComparator cc){
+        if(word.length()==0||word.length()==1) return true;
         int end = word.length()-1;
         int start = 0;
-        while(end>=start){
+        while(end>start){
             if(!cc.equalChars(word.charAt(start++),word.charAt(end--))) return false;
         }
         return true;
