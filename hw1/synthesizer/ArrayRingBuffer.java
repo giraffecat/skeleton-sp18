@@ -85,13 +85,43 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
         return fillCount;
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return new ArrayRingBufferIterator();
+    }
+
+    private class ArrayRingBufferIterator implements Iterator<T> {
+        private int length;
+        private int pos;
+
+        public ArrayRingBufferIterator() {
+            length = fillCount;
+            pos = (last+capacity-1)%capacity;
+
+        }
+
+        public boolean hasNext() {
+            return length != 0;
+        }
+
+        public T next() {
+            T returnItem = rb[pos];
+            length--;
+            pos = (pos+capacity-1)%capacity;
+            return returnItem;
+        }
+    }
+
     public static void main(String[] args) {
         BoundedQueue x = new ArrayRingBuffer(4);
         x.enqueue(33.1); // 33.1 null null  null
         x.enqueue(44.8); // 33.1 44.8 null  null
         x.enqueue(62.3); // 33.1 44.8 62.3  null
         x.enqueue(-3.4); // 33.1 44.8 62.3 -3.4
-//       System.out.println(x.peek());
 
+        Iterator<Double> seer = x.iterator();
+        while(seer.hasNext()){
+            System.out.println(seer.next());
+    }
     }
 }
