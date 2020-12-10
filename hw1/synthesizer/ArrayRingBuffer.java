@@ -96,7 +96,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
 
         public ArrayRingBufferIterator() {
             length = fillCount;
-            pos = (last+capacity-1)%capacity;
+            pos = first;
 
         }
 
@@ -107,7 +107,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
         public T next() {
             T returnItem = rb[pos];
             length--;
-            pos = (pos+capacity-1)%capacity;
+            pos = (pos + 1) % capacity;
             return returnItem;
         }
     }
