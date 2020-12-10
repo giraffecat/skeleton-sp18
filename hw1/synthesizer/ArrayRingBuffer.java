@@ -36,13 +36,12 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
 
     @Override
     public void enqueue(Object x) {
-        try{
-            fillCount++;
-            rb[last] = (T)x;
-            last = (last + 1) % capacity;
-        }catch (Exception e){
-            e.printStackTrace();
+        if (fillCount == capacity) {
+            throw new RuntimeException("you can't add more elements");
         }
+        fillCount++;
+        rb[last] = (T)x;
+        last = (last + 1) % capacity;
     }
 
     /**
@@ -52,15 +51,13 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
      */
     public T dequeue() {
         // TODO: Dequeue the first item. Don't forget to decrease fillCount and update
-        try{
-            fillCount--;
-            T temp = rb[first];
-            first = (first + 1) % capacity;
-            return temp;
-        }catch (Exception e){
-            e.printStackTrace();
+        if(fillCount == 0) {
+            throw new RuntimeException("you can't delete element");
         }
-       return null;
+        fillCount--;
+        T temp = rb[first];
+        first = (first + 1) % capacity;
+        return temp;
     }
 
     /**
@@ -68,13 +65,11 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
      */
     public T peek() {
         // TODO: Return the first item. None of your instance variables should change.
-       try{
-           T temp = rb[(first % capacity)];
-           return temp;
-       }catch (Exception e){
-           e.printStackTrace();
-       }
-       return null;
+        if(fillCount == 0) {
+            throw new RuntimeException("you can't peek element");
+        }
+        T temp = rb[(first % capacity)];
+        return temp;
     }
 
     // TODO: When you get to part 5, implement the needed code to support iteration.
