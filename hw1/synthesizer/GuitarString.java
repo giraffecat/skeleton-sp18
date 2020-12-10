@@ -20,6 +20,7 @@ public class GuitarString {
         //       Your buffer should be initially filled with zeros.
         int capacity = (int) Math.round(SR / frequency);
         buffer = new ArrayRingBuffer(capacity);
+        pluck();
     }
 
 
@@ -53,6 +54,7 @@ public class GuitarString {
 
     /* Return the double at the front of the buffer. */
     public double sample() {
+//        System.out.println(buffer.peek());
         return buffer.peek();
     }
 }

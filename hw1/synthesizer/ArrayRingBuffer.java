@@ -36,9 +36,9 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
 
     @Override
     public void enqueue(Object x) {
-        if (fillCount == capacity) {
-            throw new RuntimeException("you can't add more elements");
-        }
+//        if (fillCount == capacity) {
+//            throw new RuntimeException("you can't add more elements");
+//        }
         fillCount++;
         rb[last] = (T)x;
         last = (last + 1) % capacity;
@@ -65,6 +65,9 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
      */
     public T peek() {
         // TODO: Return the first item. None of your instance variables should change.
+        if(fillCount == 0) {
+            throw new RuntimeException("you can't peek element");
+        }
         T temp = rb[(first % capacity)];
         return temp;
     }
@@ -88,7 +91,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
         x.enqueue(44.8); // 33.1 44.8 null  null
         x.enqueue(62.3); // 33.1 44.8 62.3  null
         x.enqueue(-3.4); // 33.1 44.8 62.3 -3.4
-       System.out.println(x.peek());
+//       System.out.println(x.peek());
 
     }
 }
